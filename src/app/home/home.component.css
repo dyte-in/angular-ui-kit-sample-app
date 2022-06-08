@@ -1,0 +1,44 @@
+.container {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #050505;
+    background-image: url('../../assets/images/grid.svg');
+    background-repeat: repeat;
+    background-position: 50% 0%;
+    background-size: 48px 48px;
+}
+
+.flex-split {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10vh;
+    width: 100vw;
+}
+
+.flex-child-33 {
+    width: 33.3%;
+    text-align: center;
+    font-size: 5vh;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    padding: 2.5vh 0;
+    margin: 0 5vw;
+    border: solid;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10vh 0;
+}
+
+.logo > img {
+    height: 15vh;
+    width: auto;
+}

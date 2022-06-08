@@ -1,0 +1,11 @@
+.container {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #050505;
+    background-image: url('../../assets/images/grid.svg');
+    background-repeat: repeat;
+    background-position: 50% 0%;
+    background-size: 48px 48px;
+}
