@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  roomName: 'atvibm-jvelfw',
-  authToken: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1MjhmMjJhLWU4MTAtNGQ1OS05YWU0LWMyYmU4MTJiZTEyNSIsImxvZ2dlZEluIjp0cnVlLCJpYXQiOjE2NTQ2ODM5NjUsImV4cCI6MTY2MzMyMzk2NX0.OmVBFlwpxExZuZfDXaqT2XEeMgZc2mLmtNUa78BNywXvLFzEU1Ar9ui8Slk13eyAdDMv1v-dCq1CynAI1VqWkjV8OcXMgtxFAReJp4wmyohuQDfOqeSVWl0WqELqgdZSTz_STqCoQN9IG4NGOKwGgezfW3yOMK-_WOykxov3wMl3fWrebEIedOPEGInhp1MNPJ3n74YF1Bm6mKLZ1tbg8v7lJogSclKfi8YpKWahb8QmUvUKxQxjOQt3c6X_M7-0bMMx-RCkeAxjtzlF09fQS3UdVC6wTAu6BRnCwBLpuEzrMrT4mf3wVzRF2fBdbs6hMUvnhEnHHzRyHWPpgqrBnA'
+  roomName: 'xroomx-xnamex',
+  authToken: 'aUtH.T0k3N'
 };
 
 /*

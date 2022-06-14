@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DyteMeeting } from '@dytesdk/angular-ui-kit';
-import DyteClient, { DyteParticipants, DyteSelf } from '@dytesdk/web-core';
+import DyteClient, { DyteParticipant, DyteParticipants, DyteSelf } from '@dytesdk/web-core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -12,17 +12,26 @@ export class DyteCustomElementsComponent implements OnInit {
 
   @ViewChild('myid') meetingComponent: DyteMeeting | undefined;
   dyteMeeting: DyteClient | undefined;
-  dyteSelf: DyteSelf | undefined;
-  dyteParticipants: DyteParticipants | undefined;
+  tester = [1, 2, 3, 4];
+  dyteParticpants: DyteParticipant[];
 
-  constructor() { }
+  constructor() { 
+    this.dyteParticpants = [];
+  }
 
   ngOnInit(): void {
   }
 
+  private particpantJoinedListener(participant: DyteParticipant) {
+    this.dyteParticpants = [...this.dyteParticpants, participant];
+  }
+
+  private participantLeftListener(particpant: DyteParticipant) {
+    this.dyteParticpants = this.dyteParticpants.filter( (particpantItem) => { particpantItem.id !== particpant.id });
+  }
 
   async ngAfterViewInit() {
-    const meeting = await DyteClient.init({
+    const dyteMeeting = await DyteClient.init({
       roomName: environment.roomName,
       authToken: environment.authToken,
       defaults: {
@@ -30,9 +39,15 @@ export class DyteCustomElementsComponent implements OnInit {
         audio: true,
       },
     });
-    meeting.joinRoom();
-    this.dyteMeeting = meeting;
-    if (this.meetingComponent) this.meetingComponent.meeting = meeting;
+
+    dyteMeeting.participants.active.on('participantJoined', (participant) => this.particpantJoinedListener(participant));
+
+    dyteMeeting.participants.active.on('participantLeft', (particpant) => this.participantLeftListener(particpant));
+
+    dyteMeeting.joinRoom();
+
+    this.dyteMeeting = dyteMeeting;
+    if (this.meetingComponent) this.meetingComponent.meeting = dyteMeeting;
   }
 
 }

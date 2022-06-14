@@ -2,31 +2,35 @@
     <p>Loading...</p>
 </ng-template>
 <div *ngIf="dyteMeeting != undefined; else loader" id="dyte-meeting-container" class="display-flex">
-    <!-- <dyte-participant-audio [meeting]="dyteMeeting" class="dyte"></dyte-participant-audio> -->
+    <dyte-participants-audio [meeting]="dyteMeeting" class="dyte"></dyte-participants-audio>
     <dyte-notifications [meeting]="dyteMeeting" class="dyte"></dyte-notifications>
     <div id="header" class="display-flex">
         <dyte-recording-indicator [meeting]="dyteMeeting" class="dyte"></dyte-recording-indicator>
         <dyte-meeting-title [meeting]="dyteMeeting" class="dyte"></dyte-meeting-title>
         <dyte-participant-count [meeting]="dyteMeeting" class="dyte"></dyte-participant-count>
     </div>
-    <div id="stage" class="display-flex">
-        <dyte-participant *ngIf="dyteMeeting.self" [peer]="dyteMeeting.self" [meeting]="dyteMeeting" ></dyte-participant>
-        <dyte-participant 
-            *ngFor="let participant of dyteMeeting.participants.active.toArray()"
-            [peer]="participant"
-            [meeting]="dyteMeeting"
-        ></dyte-participant>
+    <div id="stage-container" class="display-flex">
+        <div id="logo">
+            <img src="../../assets/images/dyte_logo_dark.svg" />
+        </div>
+        <div id="stage">
+            <!-- Self particpant -->
+            <dyte-participant-tile [participant]="dyteMeeting.self" id="self-tile" >
+                <dyte-name-tag [meeting]="dyteMeeting" [participant]="dyteMeeting.self"></dyte-name-tag>
+            </dyte-participant-tile>
+            
+            <!-- All joined particpants -->
+            <ng-template ngFor let-item [ngForOf]="dyteParticpants">
+                <dyte-participant-tile [participant]="item">
+                    <dyte-name-tag [meeting]="dyteMeeting" [participant]="item"></dyte-name-tag>
+                </dyte-participant-tile>
+            </ng-template>
+
+        </div>
     </div>
     <div id="control-bar" class="display-flex">
         <dyte-camera-toggle [meeting]="dyteMeeting" class="dyte"></dyte-camera-toggle>
         <dyte-mic-toggle [meeting]="dyteMeeting" class="dyte"></dyte-mic-toggle>
-        <dyte-leave-button class="dyte"></dyte-leave-button>
-        <dyte-chat-toggle [meeting]="dyteMeeting" class="dyte"></dyte-chat-toggle>
-        <dyte-participants-toggle [meeting]="dyteMeeting" class="dyte"></dyte-participants-toggle>
-        <!-- <dyte-polls-toggle [meeting]="dyteMeeting" class="dyte"></dyte-polls-toggle> -->
-        <dyte-plugins-toggle [meeting]="dyteMeeting" class="dyte"></dyte-plugins-toggle>
-        <dyte-fullscreen-toggle class="dyte"></dyte-fullscreen-toggle>
-        <!-- <dyte-screenshare-toggle [meeting]="dyteMeeting" class="dyte"></dyte-screenshare-toggle> -->
-        <dyte-settings-toggle [meeting]="dyteMeeting" class="dyte"></dyte-settings-toggle>
+        <dyte-screen-share-toggle [meeting]="dyteMeeting"></dyte-screen-share-toggle>
     </div>
 </div>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DyteCustomConfigComponent } from './dyte-custom-config/dyte-custom-config.component';
 import { DyteCustomElementsComponent } from './dyte-custom-elements/dyte-custom-elements.component';
 import { DyteDefaultConfigComponent } from './dyte-default-config/dyte-default-config.component';
 import { HomeComponent } from './home/home.component';
@@ -8,7 +7,6 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'dyte-default-config', component: DyteDefaultConfigComponent },
-  { path: 'dyte-custom-config', component: DyteCustomConfigComponent },
   { path: 'dyte-custom-elements', component: DyteCustomElementsComponent },
 ];
 
